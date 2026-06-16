@@ -1,8 +1,8 @@
 {
-  "name": "Mi Primera PWA",
-  "short_name": "MiPWA",
-  "start_url": "/",
+  "name": "Lista de Tareas PWA",
+  "short_name": "Tareas",
+  "start_url": "./index.html",
   "display": "standalone",
   "background_color": "#ffffff",
-  "theme_color": "#2196F3"
+  "theme_color": "#2196f3"
 }
