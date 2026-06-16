@@ -1,7 +1,23 @@
+const CACHE = "mi-pwa-v1";
+
+const archivos = [
+    "./",
+    "./index.html",
+    "./manifest.json"
+];
+
 self.addEventListener("install", event => {
-    console.log("Service Worker instalado");
+    event.waitUntil(
+        caches.open(CACHE).then(cache => {
+            return cache.addAll(archivos);
+        })
+    );
 });
 
 self.addEventListener("fetch", event => {
-    console.log("Solicitud:", event.request.url);
+    event.respondWith(
+        caches.match(event.request).then(response => {
+            return response || fetch(event.request);
+        })
+    );
 });
