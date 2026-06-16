@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Mi PWA</title>
+    <link rel="manifest" href="manifest.json">
+</head>
+<body>
+    <h1>Hola, esta es una PWA</h1>
+
+    <script>
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('service-worker.js')
+                .then(() => console.log('Service Worker registrado'));
+        }
+    </script>
+</body>
+</html>
