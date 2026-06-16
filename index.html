@@ -2,17 +2,63 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Mi PWA</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Tareas PWA</title>
     <link rel="manifest" href="manifest.json">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 500px;
+            margin: 40px auto;
+            text-align: center;
+        }
+
+        input {
+            padding: 8px;
+            width: 70%;
+        }
+
+        button {
+            padding: 8px 12px;
+        }
+
+        li {
+            text-align: left;
+            margin: 10px 0;
+        }
+    </style>
 </head>
 <body>
-    <h1>Hola, esta es una PWA</h1>
 
-    <script>
-        if ('serviceWorker' in navigator) {
-            navigator.serviceWorker.register('service-worker.js')
-                .then(() => console.log('Service Worker registrado'));
-        }
-    </script>
+<h1>📋 Mi Lista de Tareas</h1>
+
+<input type="text" id="tarea" placeholder="Escribe una tarea">
+<button onclick="agregarTarea()">Agregar</button>
+
+<ul id="lista"></ul>
+
+<script>
+const lista = document.getElementById("lista");
+
+function agregarTarea() {
+    const input = document.getElementById("tarea");
+
+    if (input.value.trim() === "") return;
+
+    const li = document.createElement("li");
+    li.textContent = input.value;
+
+    li.onclick = () => li.remove();
+
+    lista.appendChild(li);
+
+    input.value = "";
+}
+
+if ("serviceWorker" in navigator) {
+    navigator.serviceWorker.register("service-worker.js");
+}
+</script>
+
 </body>
 </html>
